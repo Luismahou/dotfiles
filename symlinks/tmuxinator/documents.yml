@@ -1,0 +1,9 @@
+name: documents
+root: ~/dev/projects/documents
+
+windows:
+  - editor:
+      layout: even-horizontal
+      panes:
+        - nvim daily-planner.md
+        - nvim goals.md

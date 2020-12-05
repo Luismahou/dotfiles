@@ -1,0 +1,76 @@
+export CANVA_REPO_DIR=~/work/canva
+
+export VISUAL=nvim
+export EDITOR=nvim
+export BAT_CONFIG_PATH=~/.bat.conf
+
+# By default it's 400 miliseconds. It feels too long when trying to enter in VI-mode.
+# Resetting it to 100 milliseconds.
+export KEYTIMEOUT=1
+
+# Enable fzf shell autocompletion
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export FZF_DEFAULT_COMMAND='fd --hidden --type f --exclude "**/translations" --exclude ".git"'
+export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+
+# Enable autocompletion of packages installed via HomeBrew
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
+# Aliases
+alias v=nvim
+alias mux=tmuxinator
+alias cat=bat
+alias gs='git s'
+alias gd='git diff'
+alias gdc='git dc'
+
+# Start the command line in the folder I might be interested in
+cd $CANVA_REPO_DIR
+
+# Switch recent git branch/tag
+fgs() {
+  local branches
+  branches=$(
+    git lastbranches | awk '{$1=$1;print}'
+  ) || return
+  target=$(echo "$branches" | fzf --no-hscroll) || return
+  git switch $(echo "$target")
+}
+
+# Switch git branch/tag
+fgsa() {
+  local tags branches target
+  tags=$(
+    git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
+  branches=$(
+    git branch --all | grep -v HEAD             |
+    sed "s/.* //"    | sed "s#remotes/[^/]*/##" |
+    sort -u          | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || return
+  target=$(
+    (echo "$tags"; echo "$branches") |
+    fzf-tmux -l30 -- --no-hscroll --ansi +m -d "\t" -n 2) || return
+  git switch $(echo "$target" | awk '{print $2}')
+}
+
+# Switch git branch/tag with a preview showing the commits between the tag/branch and HEAD
+fgs_preview() {
+  local tags branches target
+  branches=$(
+    git --no-pager branch --all \
+      --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" \
+    | sed '/^$/d') || return
+  tags=$(
+    git --no-pager tag | awk '{print "\x1b[35;1mtag\x1b[m\t" $1}') || return
+  target=$(
+    (echo "$branches"; echo "$tags") |
+    fzf --no-hscroll --no-multi -n 2 \
+        --ansi --preview="git --no-pager log -150 --pretty=format:%s '..{2}'") || return
+  git switch $(awk '{print $2}' <<<"$target" )
+}
+

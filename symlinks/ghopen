@@ -1,0 +1,39 @@
+#!/bin/bash
+#
+# Open the specified file on GitHub. It will use the master branch by default:
+#
+#   ghopen path/to/file/to/open
+#
+# Specify current branch
+#
+#   ghopen path/to/file/to/open -b
+
+FILEPATH="${1}"
+USE_CURRENT_GIT_BRANCH="${2}"
+IN_GIT_REPO=$(git rev-parse --is-inside-work-tree)
+if [ "$IN_GIT_REPO" = true ]; then
+  GH_BASE=$(git config --get remote.origin.url | sed s/\\.git// | sed 's/:/\//' | sed 's/.*github.com/https:\/\/github.com/')
+  if [ -z "$GH_BASE" ]; then
+    echo "No git remote for this folder $(pwd)"
+    exit 1
+  fi
+  # Open main repo folder when the path is not given
+  if [ -z "$FILEPATH" ]; then
+    open $GH_BASE
+  else
+    if [ "$USE_CURRENT_GIT_BRANCH" == "-b" ]; then
+      GIT_BRANCH=$(git branch --show-current)
+    else
+      GIT_BRANCH="master"
+    fi
+
+    GIT_PREFIX=$(git rev-parse --show-prefix)
+    if [ -n "$GIT_PREFIX" ]; then
+      GH_URL="$GH_BASE/blob/$GIT_BRANCH/$GIT_PREFIX$FILEPATH"
+    else
+      GH_URL="$GH_BASE/blob/$GIT_BRANCH/$FILEPATH"
+    fi
+
+    open $GH_URL
+  fi
+fi

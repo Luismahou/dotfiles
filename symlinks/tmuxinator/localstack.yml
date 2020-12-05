@@ -1,0 +1,12 @@
+name: localstack
+root: ~/work/canva
+
+# Commands reference: https://docs.canva.tech/common/coding-workflow/sde-and-local-stack/
+windows:
+  - backend:
+      layout: tiled
+      panes:
+        - # backends/bin/start.sh --localstack
+        - # services/blob/bin/start_local_s3.sh
+        - # backends/bin/start.sh --rpcs
+        - # PORT=8080 frontends/bin/start.sh --hot

@@ -1,0 +1,46 @@
+#
+# To install: `brew bundle --file <path-to-this-file>/Brewfile --no-upgrade`
+#
+
+cask_args appdir: "~/Applications", require_sha: true
+
+tap "homebrew/cask-fonts"
+
+# Basic
+brew "zsh"
+brew "nvim"
+
+# tmux
+brew "tmux"
+brew "tmuxinator" # Manage tmux sessions without a sweat
+
+# Fuzzy finder utility for the terminal. It provides some nice utilities
+# to search command history. It also has an awesome vim integration
+# to search for files, text, etc.
+brew "fzf"
+
+# A better `find`
+brew "fd"
+# Great for text searches.
+brew "the_silver_searcher"
+
+# Override macOS git
+brew "git"
+brew "git-lfs"
+
+# Makes `git diff` beautiful
+brew "diff-so-fancy"
+
+# GitHub cli
+brew "gh"
+
+# Better `cat`
+brew "bat"
+
+# Font I like
+cask "font-jetbrains-mono"
+
+# Better terminal
+cask "alacritty"
+
+cask "visual-studio-code"
