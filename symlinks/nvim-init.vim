@@ -46,14 +46,26 @@ Plug 'tpope/vim-eunuch'
 " Insert/delete pairs automatically
 Plug 'jiangmiao/auto-pairs'
 
+" Utility mappings (<]-Space> to prepend a line, etc.)
+Plug 'tpope/vim-unimpaired'
+
 " Exchange motion. Great to substitute text.
 Plug 'tommcdo/vim-exchange'
 
 " Utility to format list of arguments
 Plug 'foosoft/vim-argwrap'
 
+" Support for multiple cursors
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
 " Navigate through the file like a pro
 Plug 'easymotion/vim-easymotion'
+
+" To navigate/create `alternate` files (e.g. go from source to test files)
+Plug 'tpope/vim-projectionist'
+
+" Better `f` and `t`
+Plug 'rhysd/clever-f.vim'
 
 " Save & restore coding sessions
 " To start nvim with an existing session: `nvim -S <path/to/session.vim>`
@@ -87,21 +99,8 @@ Plug 'leafgarland/typescript-vim'
 " IDE like features (code completion, find usages, etc.)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Plug 'tpope/vim-fireplace'
-" Plug 'scrooloose/nerdtree'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'tommcdo/vim-exchange'
-" Plug 'tpope/vim-rhubarb'
-" Plug 'tpope/vim-unimpaired'
-" Plug 'dyng/ctrlsf.vim'
-" Plug 'elzr/vim-json'
-" Plug 'rhysd/git-messenger.vim'
-" Plug 'rhysd/clever-f.vim'
-" Plug 'markonm/traces.vim'
-" Plug 'sirver/ultisnips'
-" Plug 'APZelos/blamer.nvim'
-" Plug 'psliwka/vim-smoothie'
-" Plug 'blueyed/vim-diminactive'
+" Fixes conceal issue between `Yggdroot/indentLine` and `json.vim` syntax
+Plug 'elzr/vim-json'
 
 " Favourite theme
 Plug 'chriskempson/base16-vim'
@@ -259,6 +258,11 @@ nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>fr <Plug>(coc-references)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>so :CocList outline<CR>
+
+"
+" vim-json settings
+"
+let g:vim_json_syntax_conceal = 0
 
 "
 " Global key bindings
