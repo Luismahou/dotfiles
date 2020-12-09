@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 ln -sf ~/dev/projects/dotfiles/symlinks/gitconfig ~/.gitconfig
+ln -sf ~/dev/projects/dotfiles/symlinks/gitignore ~/.gitignore
 ln -sf ~/dev/projects/dotfiles/symlinks/alacritty.yml ~/.alacritty.yml
 ln -sf ~/dev/projects/dotfiles/symlinks/custom-zshrc ~/.custom-zshrc
 ln -sf ~/dev/projects/dotfiles/symlinks/custom-zpreztorc ~/.custom-zpreztorc
