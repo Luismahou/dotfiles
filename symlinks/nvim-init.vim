@@ -55,6 +55,9 @@ Plug 'tommcdo/vim-exchange'
 " Utility to format list of arguments
 Plug 'foosoft/vim-argwrap'
 
+" Preview substitution commands
+Plug 'markonm/traces.vim'
+
 " Support for multiple cursors
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
@@ -101,6 +104,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Fixes conceal issue between `Yggdroot/indentLine` and `json.vim` syntax
 Plug 'elzr/vim-json'
+
+" Support for 'elm'
+Plug 'ElmCast/elm-vim'
 
 " Favourite theme
 Plug 'chriskempson/base16-vim'
