@@ -1,0 +1,9 @@
+name: elm-canva
+root: ~/dev/projects/elm-canva
+
+windows:
+  - main:
+      layout: main-vertical
+      panes:
+        - nvim -S ~/.config/nvim/sessions/elm-canva.vim
+        - # empty

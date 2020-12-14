@@ -1,0 +1,9 @@
+name: data-science
+root: ~/work/data-science
+
+windows:
+  - main:
+      layout: main-vertical
+      panes:
+        - nvim -S ~/.config/nvim/sessions/data-science.vim
+        - # empty

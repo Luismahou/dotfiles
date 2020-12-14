@@ -37,10 +37,17 @@ brew "gh"
 # Better `cat`
 brew "bat"
 
+# Who can live without clojure?
+brew "clojure"
+
 # Font I like
 cask "font-jetbrains-mono"
 
 # Better terminal
 cask "alacritty"
 
+# It's handy sometimes
 cask "visual-studio-code"
+
+# To take video captures of my screen
+cask "kap"
