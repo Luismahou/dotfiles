@@ -30,8 +30,11 @@ alias gs='git s'
 alias gd='git diff'
 alias gdc='git dc'
 
-# Start the command line in the folder I might be interested in
-cd $CANVA_REPO_DIR
+# When starting the terminal for the first time I don't want to end up in the
+# home folder, but I'm fine if tmuxinator sets a different folder :-).
+if [ $(pwd) = ~ ]; then
+  cd $CANVA_REPO_DIR
+fi
 
 # Switch recent git branch/tag
 fgs() {
