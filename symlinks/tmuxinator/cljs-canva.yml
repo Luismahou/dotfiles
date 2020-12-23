@@ -1,0 +1,9 @@
+name: cljs-canva
+root: ~/dev/projects/cljs-canva
+
+windows:
+  - main:
+      layout: main-vertical
+      panes:
+        - nvim -S ~/.config/nvim/sessions/cljs-canva.vim
+        - # empty
