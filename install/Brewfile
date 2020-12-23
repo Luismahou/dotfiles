@@ -31,6 +31,9 @@ brew "git-lfs"
 # Makes `git diff` beautiful
 brew "diff-so-fancy"
 
+# Nice summary of the recent branches I worked on
+brew "git-recent"
+
 # GitHub cli
 brew "gh"
 
