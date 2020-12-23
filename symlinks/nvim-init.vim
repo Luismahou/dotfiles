@@ -271,6 +271,11 @@ nmap <silent> <leader>so :CocList outline<CR>
 let g:vim_json_syntax_conceal = 0
 
 "
+" zoom win tab settings
+"
+nnoremap <silent> <leader>z :ZoomWinTabToggle<CR>
+
+"
 " Global key bindings
 "
 
