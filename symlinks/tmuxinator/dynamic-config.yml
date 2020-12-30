@@ -1,0 +1,9 @@
+name: dynamic-config
+root: ~/work/dynamic-config
+
+windows:
+  - main:
+      layout: main-vertical
+      panes:
+        - nvim -S ~/.config/nvim/sessions/dynamic-config.vim
+        - # empty

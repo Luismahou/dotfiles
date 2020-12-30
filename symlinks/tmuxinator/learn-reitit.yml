@@ -1,0 +1,10 @@
+name: learn-reitit
+root: ~/dev/projects/learn-reitit
+
+windows:
+  - main:
+      layout: main-vertical
+      panes:
+        - nvim -S ~/.config/nvim/sessions/learn-reitit.vim
+        - # empty
+        - # empty
